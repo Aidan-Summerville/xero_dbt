@@ -1,0 +1,21 @@
+
+version: 2
+
+models:
+    - name: account_test
+      description: "A starter dbt model"
+      columns:
+          - name: ACCOUNT_ID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: account_view_test
+      description: "A starter dbt model"
+      columns:
+          - name: ACCOUNT_ID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
