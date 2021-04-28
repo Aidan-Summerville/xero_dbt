@@ -1,17 +1,18 @@
+{{ config(materialized='ephemeral') }}
 with journals as (
 
     select *
-    from {{ var('journal') }}
+    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."JOURNAL"
 
 ), journal_lines as (
 
     select *
-    from {{ var('journal_line') }}
+    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."JOURNAL_LINE"
 
 ), accounts as (
 
     select *
-    from {{ var('account') }}
+    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."ACCOUNT"
 
 ), joined as (
 
@@ -36,7 +37,7 @@ with journals as (
         journal_lines.tax_name,
         journal_lines.tax_type,
 
-        accounts.account_class,
+        accounts.class as account_class,
 
         case when journals.source_type in ('ACCPAY', 'ACCREC') then journals.source_id end as invoice_id,
         case when journals.source_type in ('CASHREC','CASHPAID') then journals.source_id end as bank_transaction_id,

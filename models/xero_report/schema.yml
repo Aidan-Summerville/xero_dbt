@@ -1,0 +1,26 @@
+
+version: 2
+
+models:
+    - name: profit_and_loss_report
+      description: Each record represents a P&L line item at the month and account level.
+      columns:
+          - name: profit_and_loss_id
+            description: Unique identifier for each record in the profit and loss report model.
+            tests:
+                - unique
+                - not_null
+
+    - name: general_ledger
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+    - name: calender
+   

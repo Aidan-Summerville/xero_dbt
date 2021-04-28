@@ -34,5 +34,5 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   selbey_anderson:
       # Applies to all files under models/example/
-      example:
+      xero_report:
           materialized: table

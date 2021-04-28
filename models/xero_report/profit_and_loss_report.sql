@@ -1,12 +1,12 @@
 with calendar as (
 
     select *
-    from {{ ref('xero__calendar_spine') }}
+    from {{ ref('calendar') }}
 
 ), ledger as (
 
     select *
-    from {{ ref('xero__general_ledger') }}
+    from {{ ref('general_ledger') }}
 
 ), joined as (
 
