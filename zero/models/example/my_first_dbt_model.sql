@@ -9,9 +9,16 @@
 
 {{ config(materialized='table') }}
 
-Select * from 
+with source_data as (
 
-"FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."ACCOUNT"
+    select 1 as id
+    union all
+    select null as id
+
+)
+
+select *
+from source_data
 
 /*
     Uncomment the line below to remove records with null `id` values

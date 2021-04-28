@@ -11,5 +11,5 @@ jobs:
  - name: every30minutes
    schedule: '*/30 * * * *' # The example will run every 30 minutes. Note that the cron string is quoted as otherwise it will be treated as invalid alias node (see https://yaml.org/spec/1.2/spec.html#*%20alias// for details)
    steps:
-     - name: version
+     - name: Run
        command: dbt run
