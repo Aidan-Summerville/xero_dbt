@@ -22,5 +22,78 @@ models:
             description: Xero identifier for the journal entry
             tests:
                 - not_null
+                
+    - name: general_ledger_burn_uk
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
+    - name: general_ledger_drum_horse
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
+    - name: general_ledger_flagship_marketing
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
+    - name: general_ledger_greentarget
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
+    - name: general_ledger_sharper_marketing
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
+    - name: general_ledger_unity_marketing
+      description: Each record represents a journal line item. This ledger is used to create the balance sheet and profit and loss.
+      columns:
+          - name: journal_line_id
+            description: Xero identifier for the journal line.
+            tests:
+                - unique
+          - name: journal_id
+            description: Xero identifier for the journal entry
+            tests:
+                - not_null
+
     - name: calender
    

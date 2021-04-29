@@ -2,22 +2,22 @@
 with journals as (
 
     select *
-    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."JOURNAL"
+    from "FIVETRAN_INPUT"."SHARPER_MARKETING"."JOURNAL"
 
 ), journal_lines as (
 
     select *
-    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."JOURNAL_LINE"
+    from "FIVETRAN_INPUT"."SHARPER_MARKETING"."JOURNAL_LINE"
 
 ), accounts as (
 
     select *
-    from "FIVETRAN_INPUT"."FIVETRAN_XERO_CONNECTOR"."ACCOUNT"
+    from "FIVETRAN_INPUT"."SHARPER_MARKETING"."ACCOUNT"
 
 ), joined as (
 
     select 
-        "Selbey Anderson Ltd" as agcency_name,
+        "Sharper B2B Marketing Ltd" agency_name,
         journals.journal_id,
         journals.created_date_utc,
         journals.journal_date,
