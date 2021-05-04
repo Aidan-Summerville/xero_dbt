@@ -38,6 +38,7 @@ with calendar as (
     select *
     from {{ ref('general_ledger_unity_marketing') }}
 
+
 ), joined as (
 
     select 
@@ -47,13 +48,17 @@ with calendar as (
         ledger.account_id,
         ledger.account_name,
         ledger.account_code,
-        ledger.account_type, 
+        case when ledger.account_type = 'REVENUE' then 'Income'
+             when ledger.account_type = 'OVERHEADS' then 'Operating Expenses'
+             when ledger.account_type = 'DEPRECIATN' then 'Operating Expenses'
+             when ledger.account_type = 'DIRECTCOSTS' then 'Cost of Sales'
+        end as cost_class, 
         ledger.account_class, 
-        coalesce(sum(ledger.net_amount * -1),0) as net_amount
+        coalesce(sum(ledger.net_amount *-1),0) as net_amount
     from calendar
     left join ledger
         on calendar.date_month = cast({{ dbt_utils.date_trunc('month', 'ledger.journal_date') }} as date)
-    where ledger.account_class in ('REVENUE','EXPENSE')
+    where ledger.account_type in('REVENUE', 'OVERHEADS', 'DIRECTCOSTS','DEPRECIATN')
     {{ dbt_utils.group_by(8) }}
 
 )

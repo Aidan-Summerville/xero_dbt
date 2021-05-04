@@ -1,4 +1,4 @@
-{{ config(materialized='ephemeral') }}
+{{ config(materialized='table') }}
 with journals as (
 
     select *
@@ -17,7 +17,7 @@ with journals as (
 ), joined as (
 
     select 
-        "Drum Horse" agency_name,
+        'Drum Horse' agency_name,
         journals.journal_id,
         journals.created_date_utc,
         journals.journal_date,
