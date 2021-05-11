@@ -1,18 +1,39 @@
 {{ config(materialized='table') }}
 with journals as (
 
-    select *
-    from "FIVETRAN_INPUT"."FLAGSHIP_CONSULTING"."JOURNAL"
+    select 
+    journalid as journal_id
+    ,createddateutc as created_date_utc
+    ,journaldate as journal_date
+    ,journalnumber as journal_number
+    ,reference
+    ,sourceid as source_id
+    ,sourcetype as source_type
+    from "STITCH"."FLAGSHIP_XERO"."JOURNAL"
 
 ), journal_lines as (
 
-    select *
-    from "FIVETRAN_INPUT"."FLAGSHIP_CONSULTING"."JOURNAL_LINE"
+   
 
+select
+  journalid as journal_id
+,v.value:AccountCode::string  as account_code
+,v.value:AccountID::string  as account_id
+,v.value:AccountName::string as account_name
+,v.value:AccountType::string as account_type
+,v.value:Description::string as description
+,v.value:GrossAmount as gross_amount
+,v.value:JournalLineID::string  as journal_line_id
+,v.value:NetAmount as net_amount
+,v.value:TaxAmount as tax_amount
+from STITCH.FLAGSHIP_XERO.JOURNALS s
+, lateral flatten (input => journallines) v
+
+)
 ), accounts as (
 
     select *
-    from "FIVETRAN_INPUT"."FLAGSHIP_CONSULTING"."ACCOUNT"
+    from "STITCH"."FLAGSHIP_XERO"."ACCOUNT"
 
 ), joined as (
 
